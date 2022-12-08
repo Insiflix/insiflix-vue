@@ -1,6 +1,6 @@
-# vite-vue2-starter
+# Insiflix API
 
-A simple start for using vue2 with vite, using [underfin's vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2).
+TBA
 
 ## Scripts
 
