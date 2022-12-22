@@ -1,12 +1,29 @@
 import Vue from "vue";
-import App from "./App.vue";
 import socketio from "socket.io-client";
 import VueSocketIO from "vue-socket.io";
 
 export const SocketInstance = socketio("http://localhost:5000");
+import Login from "./pages/Login.vue";
+import Home from "./pages/Home.vue";
 
-Vue.use(VueSocketIO, SocketInstance);
+const routes = {
+	"/": Home,
+	"/login": Login,
+};
 
 new Vue({
-	render: h => h(App),
-}).$mount("#app");
+	el: "#app",
+	data: {
+		currentRoute: window.location.pathname,
+	},
+	computed: {
+		ViewComponent() {
+			return routes[this.currentRoute] || NotFound;
+		},
+	},
+	render(h) {
+		return h(this.ViewComponent);
+	},
+});
+
+Vue.use(VueSocketIO, SocketInstance);
