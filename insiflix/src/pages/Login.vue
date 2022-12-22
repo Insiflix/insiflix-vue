@@ -11,7 +11,7 @@
 		<div class="form-control">
 			<input
 				type="password"
-				v-model="age"
+				v-model="password"
 				name="password"
 				placeholder="Password"
 			/>
@@ -25,7 +25,7 @@ import axios from "axios";
 export default {
 	props: {
 		name: "",
-		age: "",
+		password: "",
 	},
 	data() {
 		return {
