@@ -2,8 +2,8 @@
 	<main>
 		<div class="login-overlay"></div>
 		<img class="main_logo" src="../img/insiarsch.png" alt="insiarsch">
+		<img class="bg-img" src="../img/netarsch.jpg" alt="">
 		<div class="form-container">
-			<img class="bg-img" src="../img/netarsch.jpg" alt="">
 			<div class="login-modal">
 				<div class="inner-login-container">
 					<h2 class="login-heading">Einloggen</h2>
@@ -39,7 +39,7 @@
 						<div v-if="error_messages.invalid_password">
 							<p class="text-invalid color-white">Ihr Passwort muss zwischen 4 und 60 Zeichen enthalten.</p>
 						</div>
-						<input type="submit" value="Einloggen" class="buddne btn btn-block" />
+						<button type="submit" value="Einloggen" class="buddne">Einloggen</button>
 					</form>
 				</div>
 			</div>
