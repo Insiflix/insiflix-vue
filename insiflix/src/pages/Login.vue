@@ -65,20 +65,22 @@ export default {
 	methods: {
 		onSubmit(e) {
 			e.preventDefault();
-			axios
-				.post("http://localhost:4000/auth/login", {
-					enteredName: this.name,
-					enteredPassword: this.password,
-				})
-				.then(res => {
-					localStorage.setItem("auth", "true");
-					window.location.pathname = "/";
-				})
-				.catch(e => {
-					console.log(e);
-					localStorage.setItem("auth", "false");
-					this.error = true; 
-				});
+			if(!this.error_messages.invalid_password && !this.error_messages.invalid_username){
+				axios
+					.post("http://localhost:4000/auth/login", {
+						enteredName: this.name,
+						enteredPassword: this.password,
+					})
+					.then(res => {
+						localStorage.setItem("auth", "true");
+						window.location.pathname = "/";
+					})
+					.catch(e => {
+						console.log(e);
+						localStorage.setItem("auth", "false");
+						this.error = true; 
+					});
+			}
 			
 		},
 		checkValid: function(type) {
