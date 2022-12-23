@@ -55,9 +55,16 @@ export default {
 					enteredPassword: this.password,
 				})
 				.then(res => {
+					localStorage.setItem("auth", "true");
 					window.location.pathname = "/";
 				})
-				.catch(e => console.log(e));
+				.catch(e => {
+					console.log(e);
+					localStorage.setItem("auth", "false"); 
+				});
+			
+
+				// Error anzeigen
 		},
 	},
 };
