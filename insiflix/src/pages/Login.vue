@@ -1,6 +1,8 @@
 <template>
 	<main>
+		<img class="main_logo" src="../img/insiarsch.png" alt="insiarsch">
 		<div class="form-container">
+			<img class="bg-img" src="../img/netarsch.jpg" alt="">
 			<div class="login-modal">
 				<div class="inner-login-container">
 					<h2 class="login-heading">Sign In</h2>
@@ -61,7 +63,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @font-face {
     font-family: 'Netflix Sans';
     font-weight: 300;
@@ -90,15 +92,33 @@ export default {
     src: url(../font/NetflixSans-Bold.otf) format('otf')
 }
 
-a {
-	color: #42b983;
+body {
+	overflow-x: hidden;
+	font-family: "Netflix Sans";
+	margin: 0;
+	background-color: black;
+}
+.main_logo{
+	z-index: 2;
+	position: absolute;
+	width: 10rem;
+	left: 5rem;
+	top: 1rem;
+}
+.bg-img{
+	position: absolute;
+	min-height: 100%;
+	min-width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.5;
+	z-index: -1;
 }
 .form-container {
 	font-family: "Netflix Sans";
 	position: absolute;
 	height: 100%;
-	width: 100%;;
-	background: url("../img/netarsch.jpg");
+	width: 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
