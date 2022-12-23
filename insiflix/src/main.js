@@ -1,9 +1,9 @@
 import './scss/main.scss';
 import Vue from "vue";
-import socketio from "socket.io-client";
-import VueSocketIO from "vue-socket.io";
+// import socketio from "socket.io-client";
+// import VueSocketIO from "vue-socket.io";
 
-export const SocketInstance = socketio("http://localhost:5000");
+// export const SocketInstance = socketio("http://localhost:5000");
 import Login from "./pages/Login.vue";
 import Home from "./pages/Home.vue";
 
@@ -27,4 +27,4 @@ new Vue({
 	},
 });
 
-Vue.use(VueSocketIO, SocketInstance);
+// Vue.use(VueSocketIO, SocketInstance);
