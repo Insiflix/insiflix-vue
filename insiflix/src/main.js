@@ -1,3 +1,4 @@
+import './scss/main.scss';
 import Vue from "vue";
 import socketio from "socket.io-client";
 import VueSocketIO from "vue-socket.io";
