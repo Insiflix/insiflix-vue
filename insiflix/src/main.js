@@ -6,10 +6,12 @@ import Vue from "vue";
 // export const SocketInstance = socketio("http://localhost:5000");
 import Login from "./pages/Login.vue";
 import Home from "./pages/Home.vue";
+import WatchPage from "./pages/WatchPage.vue";
 
 const routes = {
 	"/": Home,
 	"/login": Login,
+	"/watch": WatchPage,
 };
 
 new Vue({

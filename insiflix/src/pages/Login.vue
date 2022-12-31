@@ -1,54 +1,65 @@
 <template>
-	<main>
-		<div class="login-overlay"></div>
-		<img class="main_logo" src="../img/insiarsch.png" alt="insiarsch">
-		<img class="bg-img" src="../img/netarsch.jpg" alt="">
-		<div class="form-container">
-			<div class="login-modal">
-				<div class="inner-login-container">
-					<h2 class="login-heading">Einloggen</h2>
-					<div class="login-error" v-if="error">
-						<p>Leider hast du die falschen Zugangsdaten eingegeben. Es stellt sich also eine entscheidende Frage: <p class="no-padding no-margin underline">Wer bist du das du sowas definierst?</p> </p>
+	<div>
+
+		<main>
+			<div class="login-overlay"></div>
+			<img class="main_logo" src="../img/insiarsch.png" alt="insiarsch">
+			<img class="bg-img" src="../img/insiflixus.png" alt="">
+			<div class="form-container">
+				<div class="login-modal">
+					<div class="inner-login-container">
+						<h2 class="login-heading">Einloggen</h2>
+						<div class="login-error" v-if="error">
+							<p>Leider hast du die falschen Zugangsdaten eingegeben. Es stellt sich also eine entscheidende Frage: <p class="no-padding no-margin underline">Wer bist du das du sowas definierst?</p> </p>
+						</div>
+						<form @submit="onSubmit" class="add-form">
+							<div class="form-control input-box">
+								<input
+									:class="{'bottom_orange_border': error_messages.invalid_username}"
+									type="text"
+									@input="checkValid('username')"
+									v-model="name"
+									name="username"
+									required
+								/>
+								<span>Benutzername</span>
+							</div>
+							<div v-if="error_messages.invalid_username">
+								<p class="text-invalid color-white">Bitte füllen Sie das Feld mit einem gültigen Benutzernamen aus.</p>
+							</div>
+							<div class="form-control input-box">
+								<input
+									:class="{'bottom_orange_border': error_messages.invalid_password}"
+									type="password"
+									@input="checkValid('password')"
+									v-model="password"
+									name="password"
+									required
+								/>
+								<span>Passwort</span>
+							</div>
+							<div v-if="error_messages.invalid_password">
+								<p class="text-invalid color-white">Ihr Passwort muss zwischen 4 und 60 Zeichen enthalten.</p>
+							</div>
+							<button type="submit" value="Einloggen" class="buddne">Einloggen</button>
+							<div>
+								<p class="neu-paragraph">Neu bei Insiflix? <a class="neu_useless" href="#">Cringe</a></p>
+							</div>
+							<div>
+								<p class="goo-paragraph">Diese Seite ist nicht durch Google reCAPTCHA abgesichert, um sicherzustellen, dass Sie ein kleiner Goo sind. Digga. <a class="useless_button" href="#">Weitere Infos.</a></p>
+							</div>
+						</form>
 					</div>
-					<form @submit="onSubmit" class="add-form">
-						<div class="form-control input-box">
-							<input
-								:class="{'bottom_orange_border': error_messages.invalid_username}"
-								type="text"
-								@input="checkValid('username')"
-								v-model="name"
-								name="username"
-								required
-							/>
-							<span>Benutzername</span>
-						</div>
-						<div v-if="error_messages.invalid_username">
-							<p class="text-invalid color-white">Bitte füllen Sie das Feld mit einem gültigen Benutzernamen aus.</p>
-						</div>
-						<div class="form-control input-box">
-							<input
-								:class="{'bottom_orange_border': error_messages.invalid_password}"
-								type="password"
-								@input="checkValid('password')"
-								v-model="password"
-								name="password"
-								required
-							/>
-							<span>Passwort</span>
-						</div>
-						<div v-if="error_messages.invalid_password">
-							<p class="text-invalid color-white">Ihr Passwort muss zwischen 4 und 60 Zeichen enthalten.</p>
-						</div>
-						<button type="submit" value="Einloggen" class="buddne">Einloggen</button>
-					</form>
 				</div>
 			</div>
-		</div>
-	</main>
+		</main>
+		<LoginFooter></LoginFooter>
+	</div>
 </template>
 
 <script>
 import axios from "axios";
+import LoginFooter from "../components/LoginFooter.vue";
 export default {
 	data() {
 		return {
@@ -101,5 +112,8 @@ export default {
 			}
 		}
 	},
+	components: {
+		LoginFooter,
+	}, 
 };
 </script>

@@ -38,6 +38,13 @@
 .underline {
     text-decoration: underline;
 }
+.flex {
+    display: flex;
+}
+.break-word{
+    min-width: 0px !important;
+    word-break: break-all;
+}
 body {
 	font-family: "Netflix Sans";
 	margin: 0;

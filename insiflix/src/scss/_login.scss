@@ -66,7 +66,7 @@
 	width: 100%;
 	padding: 1rem;
 	border-radius: 0.4rem;
-	margin-top: 4rem;
+	margin-top: 2rem;
 	font-size: 1rem;
 	color: white;
 	font-weight: 700;
@@ -123,6 +123,90 @@
     font-size: 0.8125rem;
     margin-top: 0;
 }
+.goo-paragraph{
+	color: white;
+	font-weight: 300;
+	font-size: 0.9rem;
+	color: #8c8c8c;
+}
+.neu-paragraph{
+	color: white;
+	font-weight: 300;
+	font-size: 1.25rem;
+	color: #8c8c8c;
+}
+.neu_useless{
+	color: white;
+	text-decoration: none;
+	&:visited{
+		color: white;
+	}
+	&:hover{
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+.useless_button{
+	color: #0071eb;
+	text-decoration: none;
+	&:visited{
+		color: #0071eb;
+	}
+	&:hover{
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+.footer-wrapper{
+	color: #737373;
+	width: 100%;
+	bottom: 0;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+.footer-container{
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.footer-content{
+	p{
+		margin: 0;
+	}
+	font-weight: 300;
+	padding: 1.875rem 0;
+	font-size: 1.15rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 2rem;
+}
+.flex_footer_content{
+	color: #737373;
+	display: flex;
+	gap: 2rem;
+	justify-content: space-between;
+}
+.hide_big, .hide_small {
+	display: none;
+}
+.flex_footer_inner{
+	a{
+		color: #737373;
+		padding: 0.75rem 0;
+		min-width: 100px;
+		text-decoration: none;
+		&:visited{
+			color:#737373;
+		}
+		&:hover{
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
+	font-size: 0.9rem;
+	display: flex;
+	flex-direction: column;
+}
 @media only screen and (max-width: 1000px) {
 	.login-modal {
 		top: 0;
@@ -131,9 +215,8 @@
 	}
 	.inner-login-container{
 		border-radius: 0;
-		height: 100%;
 		width: 100%;
-		padding-top: 14rem;
+		padding-top: 20rem;
 		padding-left: 2rem;
 		padding-right: 2rem;
 		padding-bottom: 2rem;
@@ -144,6 +227,17 @@
 }
 @media only screen and (max-width: 600px) {
 	.inner-login-container{
-		padding-top: 14rem;
+		padding-top: 20rem;
+	}
+	.hide_big{
+		display: block !important;
+	}
+	.flex_footer_content{
+		gap: .75rem;
+	}
+}
+@media only screen and (min-width: 601px) {
+	.hide_small {
+		display: block;
 	}
 }
