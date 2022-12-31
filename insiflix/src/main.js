@@ -1,5 +1,6 @@
 import './scss/main.scss';
 import Vue from "vue";
+import axios from "axios";
 // import socketio from "socket.io-client";
 // import VueSocketIO from "vue-socket.io";
 
@@ -7,6 +8,8 @@ import Vue from "vue";
 import Login from "./pages/Login.vue";
 import Home from "./pages/Home.vue";
 import WatchPage from "./pages/WatchPage.vue";
+
+axios.defaults.withCredentials=true;
 
 const routes = {
 	"/": Home,

@@ -19,7 +19,6 @@ export default {
 		else {
 			axios
 			.get("http://localhost:4000/auth/validate", {
-				withCredentials: true
 			})
 			.catch(e => {
 					console.log(e);
