@@ -18,7 +18,11 @@ export default {
 			const queryString = window.location.search;
 			const Params = new URLSearchParams(queryString);
 			const videoID = Params.get("id");
-			const ApiURL = `${this.baseURL}/videos/watch/${videoID}`;
+			const ApiURL = `${
+				this.baseURL
+			}/videos/watch/${videoID}?sessionId=${localStorage.getItem(
+				"token"
+			)}`;
 			return ApiURL;
 		},
 	},

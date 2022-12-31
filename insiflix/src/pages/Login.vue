@@ -84,6 +84,7 @@ export default {
 					})
 					.then(res => {
 						localStorage.setItem("auth", "true");
+						localStorage.setItem("token", res.data.token);
 						window.location.pathname = "/";
 					})
 					.catch(e => {

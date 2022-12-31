@@ -7,25 +7,21 @@
 
 <script>
 import HelloWorld from "../components/HelloWorld.vue";
+import axios from "axios";
 
 export default {
 	components: {
 		HelloWorld,
 	},
-	created(){
-		if(localStorage.getItem("auth") !== "true"){
+	created() {
+		if (localStorage.getItem("auth") !== "true") {
 			window.location.pathname = "/login";
-		}
-		else {
-			axios
-			.get("http://localhost:4000/auth/validate", {
-			})
-			.catch(e => {
-					console.log(e);
-					localStorage.setItem("auth", "false"); 
-				});
+		} else {
+			axios.get("http://localhost:4000/auth/validate", {}).catch(e => {
+				console.log(e);
+				localStorage.setItem("auth", "false");
+			});
 		}
 	},
 };
 </script>
-
