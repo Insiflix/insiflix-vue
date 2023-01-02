@@ -1,5 +1,6 @@
 import "./scss/main.scss";
 import Vue from "vue";
+import Vuex from "vuex";
 import axios from "axios";
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'
 // import socketio from "socket.io-client";
@@ -17,9 +18,17 @@ const routes = {
 	"/watch": WatchPage,
 	"/upload": Upload,
 };
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+	state: {
+	  activeUploadComponent: "Youtube",
+	},
+  })
 
 new Vue({
 	el: "#app",
+	store,
 	data: {
 		currentRoute: window.location.pathname,
 	},
@@ -32,6 +41,7 @@ new Vue({
 		return h(this.ViewComponent);
 	},
 });
+
 
 // axios.defaults.withCredentials = true;
 

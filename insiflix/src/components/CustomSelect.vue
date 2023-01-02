@@ -59,6 +59,7 @@ export default {
                 this.renderedIcon.style.color="rgb(14, 118, 168)";
             }
             this.sBtn_text.innerText = selectedOption;
+            this.$store.state.activeUploadComponent = selectedOption
 
             this.optionMenu.classList.remove("active");
         });
@@ -72,10 +73,9 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
-body {
-  background: #e3f2fd;
+.sBtn-text {
+    color: white;
 }
 .icon-flex {
     display: flex;
@@ -93,7 +93,7 @@ $width: 330px;
         min-width: 10rem;
 		display: flex;
 		height: 55px;
-		background: #fff;
+		background: rgb(51, 51, 51);
 		padding: 20px;
 		font-size: 18px;
 		font-weight: 400;
@@ -112,7 +112,7 @@ $width: 330px;
 		padding: 10px;
 		margin-top: 10px;
 		border-radius: 8px;
-		background: #fff;
+		background: rgb(51, 51, 51);;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 		animation-name: fadeInDown;
 		-webkit-animation-name: fadeInDown;
@@ -127,9 +127,9 @@ $width: 330px;
 			padding: 0 16px;
 			border-radius: 8px;
 			align-items: center;
-			background: #fff;
+			background: rgb(51, 51, 51);;
 			&:hover {
-				background: #f2f2f2;
+				background: rgb(75, 75, 75);;
 			}
 			i {
 				font-size: 25px;
@@ -137,10 +137,13 @@ $width: 330px;
 			}
 			.option-text {
 				font-size: 18px;
-				color: #333;
+				color: white;
 			}
 		}
 	}
+}
+#chevron {
+    color: white;
 }
 .select-btn {
     #renderedIcon {
