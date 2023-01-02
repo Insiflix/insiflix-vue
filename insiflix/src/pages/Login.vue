@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import axios from "axios";
 import LoginFooter from "../components/LoginFooter.vue";
+import axiosClient from "../tools/helpers"
 export default {
 	data() {
 		return {
@@ -77,14 +77,11 @@ export default {
 		onSubmit(e) {
 			e.preventDefault();
 			if(!this.error_messages.invalid_password && !this.error_messages.invalid_username){
-				axios
-					.post("http://localhost:4000/auth/login", {
-						enteredName: this.name,
-						enteredPassword: this.password,
-					})
-					.then(res => {
+				axiosClient.post("/auth/login", 
+				{enteredName: this.name, enteredPassword: this.password}
+				).then(res => {
 						localStorage.setItem("auth", "true");
-						localStorage.setItem("token", res.data.token);
+						localStorage.setItem("watchToken", res.data.token);
 						window.location.pathname = "/";
 					})
 					.catch(e => {

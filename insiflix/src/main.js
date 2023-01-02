@@ -1,5 +1,6 @@
 import "./scss/main.scss";
 import Vue from "vue";
+import axios from "axios";
 // import socketio from "socket.io-client";
 // import VueSocketIO from "vue-socket.io";
 
@@ -30,5 +31,7 @@ new Vue({
 		return h(this.ViewComponent);
 	},
 });
+
+// axios.defaults.withCredentials = true;
 
 // Vue.use(VueSocketIO, SocketInstance);
