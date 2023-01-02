@@ -1,6 +1,7 @@
 import "./scss/main.scss";
 import Vue from "vue";
 import axios from "axios";
+import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'
 // import socketio from "socket.io-client";
 // import VueSocketIO from "vue-socket.io";
 
