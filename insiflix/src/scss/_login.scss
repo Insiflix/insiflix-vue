@@ -27,16 +27,16 @@
 	justify-content: center;
 }
 .inner-login-container {
-	padding-top: 4rem;
-	padding-left: 4rem;
-	padding-right: 4rem;
-	padding-bottom: 4rem;
+	padding-top: 3rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	padding-bottom: 3rem;
 	width: 20rem;
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius: 2%;
 }
 .login-heading {
-	font-size: 2rem;
+	font-size: 1.75rem;
 	margin-top: 0;
 	color: white;
 }
@@ -120,19 +120,19 @@
 }
 .text-invalid {
     color: $orange;
-    font-size: 0.8125rem;
+    font-size: 0.75em;
     margin-top: 0;
 }
 .goo-paragraph{
 	color: white;
 	font-weight: 300;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	color: #8c8c8c;
 }
 .neu-paragraph{
 	color: white;
 	font-weight: 300;
-	font-size: 1.25rem;
+	font-size: 1.1rem;
 	color: #8c8c8c;
 }
 .neu_useless{
@@ -178,13 +178,13 @@
 	font-size: 1.15rem;
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
+	gap: 1rem;
 	padding: 2rem;
 }
 .flex_footer_content{
 	color: #737373;
 	display: flex;
-	gap: 2rem;
+	gap: 1rem;
 	justify-content: space-between;
 }
 .hide_big, .hide_small {

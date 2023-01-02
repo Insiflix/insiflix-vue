@@ -206,7 +206,7 @@
 export default {
 	data() {
 		return {
-			baseURL: "http://localhost:4000",
+			baseURL: "https://insiflix-api.obama-prism.com",
 			video: "",
 			videoControls: "",
 			playButton: "",
@@ -469,7 +469,7 @@ export default {
 			const videoID = Params.get("id");
 			const ApiURL = `${
 				this.baseURL
-			}/videos/watch/${videoID}?sessionId=${localStorage.getItem(
+			}/videos/watch/${videoID}?watchToken=${localStorage.getItem(
 				"watchToken"
 			)}`;
 			return ApiURL;

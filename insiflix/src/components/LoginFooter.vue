@@ -21,7 +21,6 @@
                             <a class="hide_small" href="#">Nutzungsbedingungen</a>
                         </div>
                     </div>
-                    Ferrurri
                 </div>
             </div>
         </div>
