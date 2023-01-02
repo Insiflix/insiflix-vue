@@ -1,8 +1,8 @@
 <template>
-	<div>
-
+	<div class="login-container">
 		<main>
 			<div class="login-overlay"></div>
+			<div class="stacked-overlay"></div>
 			<img class="main_logo" src="../img/insiarsch.png" alt="insiarsch">
 			<img class="bg-img" src="../img/insiflixus.png" alt="">
 			<div class="form-container">

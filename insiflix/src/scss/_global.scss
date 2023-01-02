@@ -49,9 +49,11 @@ body {
 	font-family: "Netflix Sans";
 	margin: 0;
     background-color: rgb(20, 20, 20);
+    position: relative;
 }
 body, html {
     overflow-x: hidden;
+    height: 100vh;
 }
 .color-white {
     color: white;
