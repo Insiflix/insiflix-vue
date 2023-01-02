@@ -7,7 +7,7 @@
 
 <script>
 import HelloWorld from "../components/HelloWorld.vue";
-import axios from "axios";
+import axiosClient from "../tools/helpers";
 
 export default {
 	components: {
@@ -17,7 +17,7 @@ export default {
 		if (localStorage.getItem("auth") !== "true") {
 			window.location.pathname = "/login";
 		} else {
-			axios.get("http://localhost:4000/auth/validate", {}).catch(e => {
+			axiosClient.get("auth/validate").catch(e => {
 				console.log(e);
 				localStorage.setItem("auth", "false");
 			});
