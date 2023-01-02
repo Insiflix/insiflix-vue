@@ -7,11 +7,13 @@ import Vue from "vue";
 import Login from "./pages/Login.vue";
 import Home from "./pages/Home.vue";
 import WatchPage from "./pages/WatchPage.vue";
+import Upload from "./pages/Upload.vue";
 
 const routes = {
 	"/": Home,
 	"/login": Login,
 	"/watch": WatchPage,
+	"/upload": Upload,
 };
 
 new Vue({

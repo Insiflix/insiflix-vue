@@ -11,7 +11,7 @@
 					   </svg>
 				   </div>
 					 <!-- TODO: Thumbnail mit Poster Attribut? -->
-				   <video @play="updatePlayButton" @pause="updatePlayButton" @loadedmetadata="initializeVideo" @timeupdate="updateTimeElapsed(); updateProgress()" @volumechange="updateVolumeIcon" @click="togglePlay(); animatePlayback()" @mouseenter="showControls" @mouseleave="hideControls" controls class="video" :src="ApiURL" id="video" preload="metadata">
+				   <video @play="updatePlayButton" @pause="updatePlayButton" @loadedmetadata="initializeVideo" @timeupdate="updateTimeElapsed(); updateProgress()" @volumechange="updateVolumeIcon" @click="togglePlay(); animatePlayback()" @mouseenter="showControls" @mouseleave="hideControls" controls class="video" src="../assets/lobbusbaum.mp4" id="video" preload="metadata">
 				   </video>
    
 				   <div @mouseenter="showControls" @mouseleave="hideControls" class="video-controls hidden" id="video-controls">
@@ -23,7 +23,7 @@
    
 					   <div class="bottom-controls">
 					   <div class="left-controls">
-						   <button @click="togglePlay" data-title="Play (k)" id="play">
+						   <button @click="togglePlay" data-title="Play (space)" id="play">
 						   <svg class="playback-icons">
 							   <use href="#play-icon"></use>
 							   <use class="hidden" href="#pause"></use>
@@ -181,9 +181,9 @@ export default {
 		updatePlayButton: function() {
 			this.playbackIcons.forEach((icon) => icon.classList.toggle('hidden'));
 			if (this.video.paused) {
-				this.playButton.setAttribute('data-title', 'Play (k)');
+				this.playButton.setAttribute('data-title', 'Play (space)');
 			} else {
-				this.playButton.setAttribute('data-title', 'Pause (k)');
+				this.playButton.setAttribute('data-title', 'Pause (space)');
 			}
 		},
 		formatTime: function(timeInSeconds) {
@@ -328,7 +328,7 @@ export default {
 		keyboardShortcuts: function(event) {
 			const { key } = event;
 			switch (key) {
-				case 'k':
+				case ' ':
 					this.togglePlay();
 					this.animatePlayback();
 					if (this.video.paused) {
