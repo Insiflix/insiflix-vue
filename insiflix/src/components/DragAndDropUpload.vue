@@ -6,7 +6,7 @@
         <h4>{{description}}</h4>
       </header>
       <p :id="identity + '_text'">{{ supported }} </p>
-      <input :name="identity" @change="(e) => handleFileData(e)" type="file" :id="identity +'_input'" :accept="accepted" :required="required" class="hidden-input">
+      <input :name="identity" @change="(e) => handleFileData(e)" type="file" :id="identity +'_input'" :accept="accepted" v-bind="required" class="hidden-input">
       <button @click="(e) => clickInput(e)" class="btn">Choose File</button>
     </div>
 
