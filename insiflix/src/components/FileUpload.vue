@@ -1,16 +1,33 @@
 <template>
     <div class="container">
         <form class="add-form">
-            <div class="form-control form-container input-box">
-                <DragAndDropUpload></DragAndDropUpload>
+            <div class="form-container input-box">
+                <DragAndDropUpload identity="video" required="true" accepted=".mp4,.webm,.mov,.avi" description="Video hochladen*" supported="Unterstützte Dateiendungen: MP4, WEBM, MOV, AVI"></DragAndDropUpload>
+                <DragAndDropUpload identity="thumbnail" required="false" accepted=".png,.jpg,.jpeg,.webp" description="Thumbnail hochladen" supported="Unterstützte Dateiendungen: PNG, JPEG, JPG, WEBP"></DragAndDropUpload>
+            </div>
+            <div class="form-control form-container add-margin input-box">
+                <input
+                    type="text"
+                    name="title"
+                    required
+                />
+                <span>Titel*</span>
             </div>
             <div class="form-control form-container input-box">
                 <input
-                    type="password"
-                    name="password"
+                    type="text"
+                    name="tags"
                     required
                 />
                 <span>Tags*</span>
+            </div>
+            <div class="form-control form-container input-box">
+                <input
+                    type="text"
+                    name="creator"
+                    required
+                />
+                <span>Creator*</span>
             </div>
             <button type="submit" value="Einloggen" class="playbuddne form-container">Hochladen</button>
         </form>
@@ -37,14 +54,18 @@ export default {
 	font-size: 1rem;
 	color: white;
 	font-weight: 700;
-	background-color: rgb(229, 9, 20);
+	background-color: #005af0;;
 	outline: none;
 	border: none;
     &:hover{
         cursor: pointer;
     }
 }
+.add-margin {
+    margin-top: 2rem;
+}
 .form-container {
+    gap: 7.5rem;
     margin-left: 2rem;
     margin-right: 2rem;
 }

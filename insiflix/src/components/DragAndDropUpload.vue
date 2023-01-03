@@ -3,11 +3,11 @@
   <div class="card">
     <div class="drop_box">
       <header>
-        <h4>Select File here</h4>
+        <h4>{{description}}</h4>
       </header>
-      <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
-      <input @change="(event) => handleFileData(event)" type="file" hidden accept=".mp4,.docx,.pdf" id="fileID" style="display:none;">
-      <button class="btn">Choose File</button>
+      <p :id="identity + '_text'">{{ supported }} </p>
+      <input :name="identity" @change="(e) => handleFileData(e)" type="file" :id="identity +'_input'" :accept="accepted" :required="required" class="hidden-input">
+      <button @click="(e) => clickInput(e)" class="btn">Choose File</button>
     </div>
 
   </div>
@@ -18,6 +18,7 @@
 export default {
     data() {
         return {
+            supportedText: "",
             dropArea: "",
             button: "",
             dragText: "",
@@ -26,25 +27,27 @@ export default {
             filename: "",
         }
     },
+    props: ['accepted', 'description', 'supported', 'identity', 'required'],
     methods: {
-        handleFileData: function(){
-            this.fileName = e.target.files[0].name;
-            let filedata = `
-            <div class="form">
-            <h4>${this.fileName}</h4>
-            <input type="email" placeholder="Enter email upload file">
-            <button class="btn">Upload</button>
-            </div>`;
-            this.dropArea.innerHTML = filedata;
+        handleFileData: function(e){
+            let fileName = e.target.files[0].name;
+            console.log(this.fileName);
+            console.log(this.supportedText);
+            this.supportedText.innerText = fileName;
+            
         },
+        clickInput(e){
+            e.preventDefault();
+            this.input.click()
+        }
     },
     mounted() {
         this.dropArea = document.querySelector(".drop_box"),
+        this.supportedText = document.querySelector(`#${this.identity}_text`),
+        console.log( this.supportedText);
         this.button = this.dropArea.querySelector("button"),
         this.dragText = this.dropArea.querySelector("header"),
-        this.input = this.dropArea.querySelector("input");
-        this.button.onclick = () => { this.input.click(); };
-
+        this.input = document.querySelector(`#${this.identity}_input`);
     },
 }
 </script>
@@ -67,7 +70,7 @@ export default {
 .card {
   border-radius: 10px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-  width: 600px;
+  width: 100%;
   height: 260px;
   background-color: rgb(51, 51, 51);
   padding: 2rem;
@@ -82,13 +85,19 @@ export default {
 
 .drop_box {
   margin: 10px 0;
-  padding: 30px;
+  padding: 30px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 3px dotted #a3a3a3;
   border-radius: 5px;
+}
+.hidden-input{
+    height: 10px;
+    position: absolute;
+    opacity: 0;
+    top: 160px;
+    width: 1px;
 }
 
 .drop_box h4 {

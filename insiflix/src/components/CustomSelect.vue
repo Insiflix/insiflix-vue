@@ -3,7 +3,7 @@
         <div class="select-menu">
             <div class="select-btn">
                 <div class="icon-flex">
-                    <i id="renderedIcon" class="bi bi-youtube" style="color: #E1306C;"></i>
+                    <i id="renderedIcon" class="bi bi-youtube" style="color: rgb(245, 0, 0);"></i>
                     <span class="sBtn-text">Youtube</span>
                 </div>
                     <i id="chevron" class="bi bi-chevron-down" style="font-size: 1.25rem;"></i>
@@ -11,7 +11,7 @@
 
             <ul class="options">
                 <li class="option">
-                    <i class="bi bi-youtube" style="color: #E1306C;"></i>
+                    <i class="bi bi-youtube" style="color: rgb(245, 0, 0);"></i>
                     <span class="option-text">Youtube</span>
                 </li>
                 <li class="option">
@@ -163,7 +163,7 @@ $width: 330px;
 	.options {
 		display: block;
 		opacity: 0;
-		z-index: 10;
+		z-index: 100;
 		animation-name: fadeInUp;
 		-webkit-animation-name: fadeInUp;
 		animation-duration: 0.4s;
