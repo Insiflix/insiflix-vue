@@ -3,7 +3,7 @@
 		<form class="add-form" @submit="onSubmit">
 			<div class="form-container input-box">
 				<DragAndDropUpload
-					@handleFileInput="setVideo(val)"
+					@handleFileInput="(val) => setVideo(val)"
 					:identity="'video'"
 					:required="{ required: true }"
 					:accepted="'.mp4,.webm,.mov,.avi'"
@@ -11,7 +11,7 @@
 					:supported="'Unterstützte Dateiendungen: MP4, WEBM, MOV, AVI'"
 				></DragAndDropUpload>
 				<DragAndDropUpload
-					@handleFileInput="setThumbnail(val)"
+					@handleFileInput="(val) => setThumbnail(val)"
 					:identity="'thumbnail'"
 					:required="{ required: false }"
 					:accepted="'.png,.jpg,.jpeg,.webp'"
