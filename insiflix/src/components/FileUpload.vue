@@ -3,7 +3,7 @@
 		<form class="add-form" @submit="onSubmit">
 			<div class="form-container input-box">
 				<DragAndDropUpload
-					@handleFileInput="(val) => setVideo(val)"
+					@handleFileInput="val => setVideo(val)"
 					:identity="'video'"
 					:required="{ required: true }"
 					:accepted="'.mp4,.webm,.mov,.avi'"
@@ -11,7 +11,7 @@
 					:supported="'Unterstützte Dateiendungen: MP4, WEBM, MOV, AVI'"
 				></DragAndDropUpload>
 				<DragAndDropUpload
-					@handleFileInput="(val) => setThumbnail(val)"
+					@handleFileInput="val => setThumbnail(val)"
 					:identity="'thumbnail'"
 					:required="{ required: false }"
 					:accepted="'.png,.jpg,.jpeg,.webp'"
@@ -44,6 +44,9 @@
 
 <script>
 import DragAndDropUpload from "./DragAndDropUpload.vue";
+import axiosClient from "../tools/helpers";
+import axios from "axios";
+import FormData from "form-data";
 
 export default {
 	data() {
@@ -65,9 +68,17 @@ export default {
 		onSubmit(e) {
 			e.preventDefault();
 			console.log(this.video, this.thumbnail);
-			return;
+			let form = new FormData();
+			form.append("title", this.title);
+			form.append("creator", this.creator);
+			form.append("tags", this.tags);
+			form.append("thumbnail", this.thumbnail);
+			form.append("file", this.video);
+
 			axiosClient
-				.post("/upload/yt", { url: this.url, tags: this.tags })
+				.post("/upload/file", form, {
+					headers: { "Content-Type": "multipart/form-data" },
+				})
 				.then(res => console.log("sucess"))
 				.catch(err => console.log(err));
 		},

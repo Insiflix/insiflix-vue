@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-	baseURL: "https://insiflix-api.obama-prism.com",
+	baseURL: "http://localhost:4000",
 	withCredentials: true,
 	headers: {
 		"Content-Type": "application/x-www-form-urlencoded",
