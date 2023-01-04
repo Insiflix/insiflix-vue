@@ -6,7 +6,7 @@
         <h4>{{description}}</h4>
       </header>
       <p :id="identity + '_text'">{{ supported }} </p>
-      <input :name="identity" @change="(e) => handleFileData(e)" type="file" :id="identity +'_input'" :accept="accepted" v-bind="required" class="hidden-input">
+      <input :name="identity" @change="$emit('handleFileInput', this.input), (e) => handleFileData(e)" type="file" :id="identity +'_input'" :accept="accepted" v-bind="required" class="hidden-input">
       <button @click="(e) => clickInput(e)" class="btn">Choose File</button>
     </div>
 
@@ -31,8 +31,6 @@ export default {
     methods: {
         handleFileData: function(e){
             let fileName = e.target.files[0].name;
-            console.log(this.fileName);
-            console.log(this.supportedText);
             this.supportedText.innerText = fileName;
             
         },

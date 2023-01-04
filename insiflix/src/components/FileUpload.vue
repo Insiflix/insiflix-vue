@@ -2,8 +2,8 @@
     <div class="container">
         <form class="add-form">
             <div class="form-container input-box">
-                <DragAndDropUpload :identity="'video'" :required="{required: true}" :accepted="'.mp4,.webm,.mov,.avi'" :description="'Video hochladen*'" :supported="'Unterstützte Dateiendungen: MP4, WEBM, MOV, AVI'"></DragAndDropUpload>
-                <DragAndDropUpload :identity="'thumbnail'" :required="{required: false}" :accepted="'.png,.jpg,.jpeg,.webp'" :description="'Thumbnail hochladen'" :supported="'Unterstützte Dateiendungen: PNG, JPEG, JPG, WEBP'"></DragAndDropUpload>
+                <DragAndDropUpload @handleFileInput="setVideo(val)" :identity="'video'" :required="{required: true}" :accepted="'.mp4,.webm,.mov,.avi'" :description="'Video hochladen*'" :supported="'Unterstützte Dateiendungen: MP4, WEBM, MOV, AVI'"></DragAndDropUpload>
+                <DragAndDropUpload @handleFileInput="setThumbnail(val)" :identity="'thumbnail'" :required="{required: false}" :accepted="'.png,.jpg,.jpeg,.webp'" :description="'Thumbnail hochladen'" :supported="'Unterstützte Dateiendungen: PNG, JPEG, JPG, WEBP'"></DragAndDropUpload>
             </div>
             <div class="form-control form-container add-margin input-box">
                 <input
@@ -38,6 +38,20 @@
 import DragAndDropUpload from './DragAndDropUpload.vue';
 
 export default {
+    data() {
+        return {
+            thumbnail: '',
+            video: '',
+        }
+    },
+    methods: {
+        setThumbnail: function(val) {
+            this.thumbnail = val
+        },
+        setVideo: function(val) {
+            this.video = val;
+        }
+    },
     components: { DragAndDropUpload }
 }
 </script>
