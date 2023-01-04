@@ -31,8 +31,9 @@ export default {
     methods: {
         handleFileData: function(e){
             let fileName = e.target.files[0].name;
+            let file = e.target.files[0];
             this.supportedText.innerText = fileName;
-            this.$emit('handleFileInput', this.input);
+            this.$emit('handleFileInput', file);
             
         },
         clickInput(e){
