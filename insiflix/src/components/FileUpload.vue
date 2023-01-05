@@ -93,9 +93,8 @@ export default {
                     if(percentCompleted < 100) {
                         this.uploadPercentage = percentCompleted;
                         this.progressOverlay.style.width = `${percentCompleted}%`;
-                    }else {
-                        this.uploadInProgress = false;
                     }
+
             }
             axiosClient.post("/upload/file", form, {
                         headers: { "Content-Type": "multipart/form-data" }, onUploadProgress,
@@ -105,6 +104,7 @@ export default {
                         setTimeout(() => {
                             this.progressOverlay.style.width ="0px";
                             this.uploadPercentage = 0;
+                            this.uploadInProgress = false;
                         }, 1000);
                     }).catch(error =>{
                         this.progressOverlay.style.width ="100%";
@@ -133,6 +133,7 @@ export default {
     border-radius: 0.4rem;
     background-color: #21A4EF;
     height: 100%;
+    transition: width: ;
 }
 .container {
 	width: 100%;
