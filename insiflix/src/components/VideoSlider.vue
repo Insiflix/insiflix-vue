@@ -210,7 +210,7 @@ export default {
         left: `${showcaseWidth}px`,
         width: `${selectedRect.width}px`,
         height: `${selectedRect.height}px`,
-        "background-color": `${selectedSlide.style.backgroundColor}`,
+        backgroundImage: selectedSlide.style.backgroundImage,
       };
       let transformOrigin = "center center";
       if (this.selectedSlidePos.isFirst) {
