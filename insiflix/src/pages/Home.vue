@@ -2,9 +2,7 @@
   <div id="app">
     <NavBar></NavBar>
     <VideoSlider></VideoSlider>
-    <VideoSlider></VideoSlider>
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Hello Vue 2 + Vite" />
   </div>
 </template>
 

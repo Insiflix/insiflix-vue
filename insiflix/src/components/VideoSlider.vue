@@ -12,6 +12,7 @@
     </div>
 
     <div
+      ref="showcase"
       v-on:mouseout="hideShowcase"
       class="showcase"
       :class="{ expand: expandShowcase }"
@@ -51,6 +52,7 @@
 
 <script>
 import _ from "lodash";
+import axiosClient from "../tools/helpers";
 export default {
   name: "Slider",
   directives: {
@@ -85,6 +87,8 @@ export default {
         21, 22, 23, 24,
       ],
       infinityLoop: false,
+      videos: [],
+      imageIndex: 0,
     };
   },
   methods: {
@@ -264,11 +268,14 @@ export default {
               const slide = this.$el.querySelector(slideID);
               const offset = contentIndex * 7;
               const hue = (containerIndex * 20) % 360;
+              console.log(this.videos.length);
+              //   if (!this.imageIndex > this.videos.length) {
               this.setStyleProperty(slide, {
-                "background-color": `hsl(${hue},${40 + offset}%,${
-                  50 + offset
-                }%)`,
+                "background-image": `url("/src/img/insiflixus.png"
+                  )`,
               });
+              //   }
+              this.imageIndex++;
             }
           );
           if (callback) {
@@ -283,9 +290,6 @@ export default {
   },
   mounted() {
     this.$el.style.setProperty("--ratio", `${this.ratio}`);
-    this.slideContainer.forEach((container) => {
-      this.setColor(container);
-    });
     window.addEventListener(
       "resize",
       _.debounce(this.resetContentContainer, 150)
@@ -299,6 +303,19 @@ export default {
   },
   created() {
     this.setContentContainer();
+    axiosClient
+      .get("/recommandations/recent", 24)
+      .then((res) => {
+        if (res.status === 200) {
+          this.videos = res.data.videos;
+          this.slideContainer.forEach((container) => {
+            this.setColor(container);
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
@@ -356,6 +373,7 @@ $slider-width: $slider-container-width * 3;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .slide-button.slide-button--left {
   left: 0;
 }
