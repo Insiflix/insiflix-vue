@@ -114,6 +114,7 @@ export default {
                         this.progressOverlay.style.width ="100%";
                         this.progressOverlay.classList.add("failed");
                         setTimeout(() => {
+                            this.uploadInProgress = false;
                             this.progressOverlay.style.width="0px";
                         }, 1000);
                     });
@@ -128,7 +129,7 @@ export default {
     z-index: 5;
 }
 .failed {
-    background-color: rgb(245, 0, 0);
+    background-color: rgb(245, 0, 0)!important;
 }
 .progress-overlay {
     left: 0;
