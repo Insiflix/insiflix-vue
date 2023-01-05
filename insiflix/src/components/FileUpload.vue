@@ -31,13 +31,18 @@
 				<input v-model="creator" type="text" name="creator" required />
 				<span>Creator*</span>
 			</div>
-			<button
-				type="submit"
-				value="Einloggen"
-				class="playbuddne form-container"
-			>
-				Hochladen
-			</button>
+                <button
+                    type="submit"
+                    value="Einloggen"
+                    class="playbuddne"
+                >
+                <div class="progress-overlay" id="progress-overlay">
+                </div>
+                <div v-if="uploadInProgress" class="spin index">
+                    <i class="bi flex bi-arrow-clockwise"></i>
+                </div>
+                <span class="index">Hochladen</span> 
+                </button>
 		</form>
 	</div>
 </template>
@@ -51,13 +56,21 @@ import FormData from "form-data";
 export default {
 	data() {
 		return {
+            progressOverlay: "",
 			thumbnail: "",
 			video: "",
 			title: "",
 			creator: "",
 			tags: "",
+            progressParagraph: "",
+            uploadInProgress: "",
+            uploadPercentage: "",
 		};
 	},
+    mounted() {
+        this.progressParagraph = document.querySelector("#progress-paragraph");
+        this.progressOverlay = document.querySelector("#progress-overlay");
+    },
 	methods: {
 		setThumbnail: function (val) {
 			this.thumbnail = val;
@@ -65,9 +78,8 @@ export default {
 		setVideo: function (val) {
 			this.video = val;
 		},
-		onSubmit(e) {
+		async onSubmit(e) {
 			e.preventDefault();
-			console.log(this.video, this.thumbnail);
 			let form = new FormData();
 			form.append("title", this.title);
 			form.append("creator", this.creator);
@@ -75,12 +87,29 @@ export default {
 			form.append("thumbnail", this.thumbnail);
 			form.append("file", this.video);
 
-			axiosClient
-				.post("/upload/file", form, {
-					headers: { "Content-Type": "multipart/form-data" },
-				})
-				.then(res => console.log("sucess"))
-				.catch(err => console.log(err));
+            const onUploadProgress = (event) => {
+                    const percentCompleted = Math.round((event.loaded * 100) / event.total);
+                    this.uploadInProgress = true;
+                    if(percentCompleted < 100) {
+                        this.uploadPercentage = percentCompleted;
+                        this.progressOverlay.style.width = `${percentCompleted}%`;
+                    }else {
+                        this.uploadInProgress = false;
+                    }
+            }
+            axiosClient.post("/upload/file", form, {
+                        headers: { "Content-Type": "multipart/form-data" }, onUploadProgress,
+                    }).then(res =>{
+                        console.log("success");
+                        this.progressOverlay.style.width ="0px";
+                        this.uploadPercentage = 0;
+                    }).catch(error =>{
+                        this.progressOverlay.style.width ="100%";
+                        this.progressOverlay.classList.add("failed");
+                        setTimeout(() => {
+                            this.progressOverlay.style.width="0px";
+                        }, 1000);
+                    });
 		},
 	},
 	components: { DragAndDropUpload },
@@ -88,10 +117,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.index {
+    z-index: 5;
+}
+.failed {
+    background-color: rgb(245, 0, 0);
+}
+.progress-overlay {
+    left: 0;
+    top: 0;
+    position: absolute;
+    border-radius: 0.4rem;
+    background-color: #21A4EF;
+    height: 100%;
+}
 .container {
 	width: 100%;
 }
+.flex-wrapper-icon {
+    display: flex;
+    align-items: center;
+}
 .playbuddne {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
 	width: 10rem;
 	padding: 1rem;
 	border-radius: 0.4rem;
@@ -113,5 +166,16 @@ export default {
 	gap: 7.5rem;
 	margin-left: 2rem;
 	margin-right: 2rem;
+}
+.spin {
+    animation: spinner 1s linear infinite;
+}
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 </style>

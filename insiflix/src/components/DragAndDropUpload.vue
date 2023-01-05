@@ -44,7 +44,6 @@ export default {
     mounted() {
         this.dropArea = document.querySelector(".drop_box"),
         this.supportedText = document.querySelector(`#${this.identity}_text`),
-        console.log( this.supportedText);
         this.button = this.dropArea.querySelector("button"),
         this.dragText = this.dropArea.querySelector("header"),
         this.input = document.querySelector(`#${this.identity}_input`);
