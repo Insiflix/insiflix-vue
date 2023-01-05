@@ -101,8 +101,11 @@ export default {
                         headers: { "Content-Type": "multipart/form-data" }, onUploadProgress,
                     }).then(res =>{
                         console.log("success");
-                        this.progressOverlay.style.width ="0px";
-                        this.uploadPercentage = 0;
+                        this.progressOverlay.style.width ="100%";
+                        setTimeout(() => {
+                            this.progressOverlay.style.width ="0px";
+                            this.uploadPercentage = 0;
+                        }, 1000);
                     }).catch(error =>{
                         this.progressOverlay.style.width ="100%";
                         this.progressOverlay.classList.add("failed");
