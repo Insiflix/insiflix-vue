@@ -133,7 +133,7 @@ export default {
     border-radius: 0.4rem;
     background-color: #21A4EF;
     height: 100%;
-    transition: width: ;
+    transition: .25s ;
 }
 .container {
 	width: 100%;
