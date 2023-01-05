@@ -102,9 +102,13 @@ export default {
                         console.log("success");
                         this.progressOverlay.style.width ="100%";
                         setTimeout(() => {
-                            this.progressOverlay.style.width ="0px";
+                            this.progressOverlay.classList.add("opacity");
                             this.uploadPercentage = 0;
                             this.uploadInProgress = false;
+                            setTimeout(() => {
+                                this.progressOverlay.style.width ="0px";
+                                this.progressOverlay.classList.remove("opacity");
+                            })
                         }, 1000);
                     }).catch(error =>{
                         this.progressOverlay.style.width ="100%";
@@ -134,6 +138,10 @@ export default {
     background-color: #21A4EF;
     height: 100%;
     transition: .25s ;
+}
+.opacity {
+    opacity: 0;
+    transition: 0.75s;
 }
 .container {
 	width: 100%;
